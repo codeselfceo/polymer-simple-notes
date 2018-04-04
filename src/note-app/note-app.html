@@ -6,12 +6,24 @@ Copyright (c) 2018 Codeself, Inc. All rights reserved.
 <!-- Polymer -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
+<!-- Polymer -->
+<link rel="import" href="../../bower_components/polymerfire/firebase-app.html">
+
 <!-- Login Component -->
 <link rel="import" href="../note-login/note-login.html">
 
 <dom-module id="note-app">
     <template>
         <style></style>
+
+        <!-- Firebase App Config -->
+        <firebase-app
+            name="polymer_simple_notes"
+            api-key="AIzaSyDnB0vbH41TKaI_FLFvU98MzggUr2ytG1U",
+            auth-domain="polymer-simple-notes.firebaseapp.com",
+            database-url="https://polymer-simple-notes.firebaseio.com",
+            storage-bucket="polymer-simple-notes.appspot.com",
+            messaging-sender-id="259568234074"></firebase-app>
 
         <note-login></note-login>
     </template>

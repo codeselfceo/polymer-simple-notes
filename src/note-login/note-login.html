@@ -74,6 +74,12 @@ Copyright (c) 2018 Codeself, Inc. All rights reserved.
             }
         </style>
 
+        <!-- Firebase Auth Configuration -->
+        <firebase-auth
+            app-name="polymer_simple_notes"
+            id="firebaseAuth"
+            user="{{user}}"></firebase-auth>
+
         <main>
             <div class="header-wrapper">
                 <iron-image
@@ -85,25 +91,25 @@ Copyright (c) 2018 Codeself, Inc. All rights reserved.
             </div>
             <div class="auths-wrapper">
                 <!-- Google Sign in -->
-                <paper-button raised>
+                <paper-button raised on-tap="_signInWithGoogle">
                     <iron-icon src="../../images/brands/google.svg"></iron-icon>
                     Google
                 </paper-button>
 
                 <!-- Facebook Sign in -->
-                <paper-button raised>
+                <paper-button raised on-tap="_signInWithFacebook">
                     <iron-icon src="../../images/brands/facebook.svg"></iron-icon>
                     Facebook
                 </paper-button>
 
                 <!-- Twitter Sign in -->
-                <paper-button raised>
+                <paper-button raised on-tap="_signInWithTwitter">
                     <iron-icon src="../../images/brands/twitter.svg"></iron-icon>
                     Twitter
                 </paper-button>
 
                 <!-- Github Sign in -->
-                <paper-button raised>
+                <paper-button raised on-tap="_signInWithGithub">
                     <iron-icon src="../../images/brands/github.svg"></iron-icon>
                     Github
                 </paper-button>
@@ -119,6 +125,44 @@ Copyright (c) 2018 Codeself, Inc. All rights reserved.
                 // Element definition
                 static get is() {
                     return 'note-login';
+                }
+
+                // Element properties
+                static get properties() {
+                    return {
+                        user: {
+                            type: Object,
+                            notify: true,
+                            observer: '_userChanged'
+                        }
+                    };
+                }
+
+                // Authenticates with Google
+                _signInWithGoogle() {
+                    this.$.firebaseAuth.signInWithRedirect('google');
+                }
+
+                // Authenticates with Facebook
+                _signInWithFacebook() {
+                    this.$.firebaseAuth.signInWithRedirect('facebook');
+                }
+
+                // Authenticates with Twiiter
+                _signInWithTwitter() {
+                    this.$.firebaseAuth.signInWithRedirect('twitter');
+                }
+
+                // Authenticates with Github
+                _signInWithGithub() {
+                    this.$.firebaseAuth.signInWithRedirect('github');
+                }
+
+                // Listens for changes on user
+                _userChanged(user) {
+                    if (user) {
+                        console.log('Logged as:', user);
+                    }
                 }
             }
             window.customElements.define(NoteLogin.is, NoteLogin);

@@ -1,0 +1,32 @@
+<!--
+@license
+Copyright (c) 2018 Codeself, Inc. All rights reserved.
+-->
+
+<!-- Polymer -->
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<!-- Login Component -->
+<link rel="import" href="../note-login/note-login.html">
+
+<dom-module id="note-app">
+    <template>
+        <style></style>
+
+        <note-login></note-login>
+    </template>
+
+    <script>
+        'use strict';
+
+        (function() {
+            class NoteApp extends Polymer.Element {
+                // Element definition
+                static get is() {
+                    return 'note-app';
+                }
+            }
+            window.customElements.define(NoteApp.is, NoteApp);
+        }());
+    </script>
+</dom-module>

@@ -6,11 +6,109 @@ Copyright (c) 2018 Codeself, Inc. All rights reserved.
 <!-- Polymer -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
+<!-- Paper -->
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<!-- Iron -->
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+
+<!-- Polymerfire -->
+<link rel="import" href="../../bower_components/polymerfire/firebase-auth.html">
+
 <dom-module id="note-login">
     <template>
-        <style></style>
+        <style>
+            main {
+                width: 100%;
+                height: 100vh;
 
-        <h1>login</h1>
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+            }
+
+            /* Header */
+            main .header-wrapper {
+                margin-bottom: 36px;
+
+                @apply --layout-vertical;
+                @apply --layout-center-center;
+            }
+
+            main .header-wrapper iron-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .header-wrapper h3 {
+                color: var(--paper-grey-700);
+                margin: 0;
+                margin-top: 24px !important;
+                font-weight: lighter;
+                font-size: 2em;
+            }
+
+            /* Sign in */
+            .auths-wrapper {
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+            }
+
+            .auths-wrapper paper-button {
+                width: 150px;
+                height: 50px;
+                text-transform: none;
+                color: var(--paper-grey-700);
+                font-size: 1.2em;
+                background-color: #fff;
+
+                @apply --layout-horizontal;
+                @apply --layout-center-center;
+            }
+
+            .auths-wrapper paper-button iron-icon {
+                margin-right: 12px;
+                width: 32px;
+                height: 32px;
+            }
+        </style>
+
+        <main>
+            <div class="header-wrapper">
+                <iron-image
+                    preload
+                    fade
+                    sizing="contain"
+                    src="../../images/simple_notes.svg"></iron-image>
+                <h3>All your notes & ideas in one place. Sign in to continue.</h3>
+            </div>
+            <div class="auths-wrapper">
+                <!-- Google Sign in -->
+                <paper-button raised>
+                    <iron-icon src="../../images/brands/google.svg"></iron-icon>
+                    Google
+                </paper-button>
+
+                <!-- Facebook Sign in -->
+                <paper-button raised>
+                    <iron-icon src="../../images/brands/facebook.svg"></iron-icon>
+                    Facebook
+                </paper-button>
+
+                <!-- Twitter Sign in -->
+                <paper-button raised>
+                    <iron-icon src="../../images/brands/twitter.svg"></iron-icon>
+                    Twitter
+                </paper-button>
+
+                <!-- Github Sign in -->
+                <paper-button raised>
+                    <iron-icon src="../../images/brands/github.svg"></iron-icon>
+                    Github
+                </paper-button>
+            </div>
+        </main>
     </template>
 
     <script>
